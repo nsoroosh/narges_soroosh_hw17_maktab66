@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import AllItems from "./AllItems";
+import "./App.css";
+import SelectedItems from "./SelectedItems";
+import React, { useState } from 'react'
+
+export const Context = React.createContext([]);
 
 function App() {
+  const [context, setContext] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Context.Provider value={[context, setContext]}>
+        <AllItems />
+      <SelectedItems />
+      </Context.Provider>
+    </>
   );
 }
 
